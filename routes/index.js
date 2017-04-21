@@ -262,20 +262,25 @@ conn.once("open", function(){
       if(err){
         res.send("Error");
       }
+      if(docs.length == 0){
+	 res.redirect("/user/login");
+      }
       //console.log(docs[0]);
      // res.send(docs[0].pass);
-     if(password == docs[0].pass){
-      console.log("Correct Password");
-      sess.id = id;
-      console.log("In session ID: " + sess.id);
-      images_to_render = [];
-      res.redirect("/user/upload");
-     }
-     else{
-      console.log("Wrong Password");
-      res.redirect("/user/login");
-     }
-    });
+      else{
+      	if(password == docs[0].pass){
+      	console.log("Correct Password");
+      	sess.id = id;
+      	console.log("In session ID: " + sess.id);
+      	images_to_render = [];
+      	res.redirect("/user/upload");
+     	}
+    	 else{
+    	  console.log("Wrong Password");
+    	  res.redirect("/user/login");
+    	 }
+      }
+      });
   });
 
   router.get("/user/logout", function(req, res){
