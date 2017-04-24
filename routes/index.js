@@ -56,7 +56,7 @@ conn.once("open", function(){
     //
     // //pipe multer's temp file /uploads/filename into the stream we created above. On end deletes the temporary file.
     fs.createReadStream("./uploads/" + req.file.filename)
-      .on("end", function(){fs.unlink("./uploads/"+ req.file.filename, function(err){res.send("<h1 align='center'>success</h1><br/><br/><a href = '/user/upload'><h3>BACK</h3></a>")})})
+      .on("end", function(){fs.unlink("./uploads/"+ req.file.filename, function(err){res.render("success")})})
         .on("err", function(){res.send("Error uploading image")})
           .pipe(writestream);
 
@@ -286,7 +286,7 @@ conn.once("open", function(){
   router.get("/user/logout", function(req, res){
     sess.id = "";
     console.log("In session ID: " + sess.id);
-    res.send("<h2> LOGGED OUT </h2><br/><a href = '/user/login'><h3>LOG IN</h3></a>");
+    res.send("logout");
   });
 
   //follow people
