@@ -286,7 +286,7 @@ conn.once("open", function(){
   router.get("/user/logout", function(req, res){
     sess.id = "";
     console.log("In session ID: " + sess.id);
-    res.send("logout");
+    res.render("logout");
   });
 
   //follow people
