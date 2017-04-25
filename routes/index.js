@@ -7,7 +7,7 @@ var upload = multer({dest: "./uploads"});
 
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://admin:ccbd1@ds143030.mlab.com:43030/imagedb')
+mongoose.connect('mongodb://admin:****@ds143030.mlab.com:43030/****')
 var conn = mongoose.connection;
 
 var sess = { id: "" }
